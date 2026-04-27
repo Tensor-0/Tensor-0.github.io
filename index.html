@@ -1,137 +1,416 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 
 <head>
-  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
-  <style type="text/css">
-  /* Design Credits: Jon Barron and Deepak Pathak and Abhishek Kar and Saurabh Gupta*/
-  a {
-  color: #1772d0;
-  text-decoration:none;
-  }
-  a:focus, a:hover {
-  color: #f09228;
-  text-decoration:none;
-  }
-  body,td,th {
-    font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-    font-size: 16px;
-    font-weight: 400
-  }
-  heading {
-    font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-    font-size: 17px; /* 19 */
-    font-weight: 600 /* 1000 */
-  }
-  hr
-  {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  }
-  strong {
-    font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-    font-size: 16px;
-    font-weight: 600 /* 800 */
-  }
-  strongred {
-    font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-    color: 'red' ;
-    font-size: 16px
-  }
-  sectionheading {
-    font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-    font-size: 22px;
-    font-weight: 600
-  }
-  pageheading {
-    font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-    font-size: 38px;
-    font-weight: 400
-  }
-  .ImageBorder
-  {
-      border-width: 1px;
-      border-color: Black;
-  }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tensor-0 | Robotics & Embodied AI</title>
   <link rel="shortcut icon" href="images/robot_icon.png">
-  <script type="text/javascript" src="js/hidebib.js"></script>
-  <title>Tensor-0</title>
-  <meta name="Tensor-0's Homepage" http-equiv="Content-Type" content="Tensor-0's Homepage">
-  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1772d0;
+      --accent: #f09228;
+      --bg: #fdfdfd;
+      --card-bg: #ffffff;
+      --text: #333;
+      --text-light: #666;
+      --border: #e8e8e8;
+      --tag-bg: #eef4fb;
+      --tag-text: #1772d0;
+      --section-bg: #f7f9fc;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
+      font-size: 16px;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { color: var(--accent); }
+
+    /* Language Switch */
+    .lang-switch {
+      text-align: center;
+      padding: 18px 0 10px;
+      font-size: 15px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .lang-switch a { margin: 0 12px; font-weight: 600; }
+
+    /* Container */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header / Profile */
+    .profile-section {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      padding: 40px 0 30px;
+    }
+    .profile-photo {
+      flex-shrink: 0;
+      width: 200px;
+    }
+    .profile-photo img {
+      width: 100%;
+      border-radius: 15px;
+    }
+    .profile-info { flex: 1; }
+    .profile-info h1 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .profile-info .subtitle {
+      font-size: 17px;
+      color: var(--text-light);
+      margin-bottom: 14px;
+    }
+    .profile-info p { text-align: justify; margin-bottom: 10px; }
+    .profile-links { margin-top: 10px; }
+    .profile-links a { margin-right: 14px; }
+
+    /* Top Badges */
+    .top-badges { text-align: center; padding: 10px 0 20px; }
+    .top-badges img { margin: 3px 4px; }
+
+    /* Section */
+    .section { padding: 30px 0; }
+    .section-title {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary);
+      display: inline-block;
+    }
+
+    /* Project Card */
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 18px;
+      transition: box-shadow 0.2s;
+    }
+    .project-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .project-card h3 { font-size: 18px; margin-bottom: 6px; }
+    .project-card h3 a { font-weight: 600; }
+    .project-card .desc { color: var(--text-light); font-size: 15px; margin-bottom: 10px; text-align: justify; }
+    .project-card .desc-en { color: var(--text-light); font-size: 14px; font-style: italic; margin-bottom: 10px; text-align: justify; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 13px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* LocoWiki */
+    .locowiki-section {
+      background: var(--section-bg);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-top: 10px;
+    }
+    .locowiki-section h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .locowiki-section p { margin-bottom: 10px; }
+    .locowiki-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+    .locowiki-links a {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .locowiki-links a:hover { background: var(--accent); color: #fff; }
+
+    /* Tech Stack */
+    .tech-stack { padding: 30px 0 10px; }
+    .tech-stack h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .tech-category { margin-bottom: 16px; }
+    .tech-category h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-light);
+    }
+    .tech-category p img { margin: 3px 4px; }
+
+    /* Contact */
+    .contact-section { text-align: center; padding: 20px 0 10px; }
+    .contact-section img { margin: 3px 4px; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px 0 40px;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+    .footer img { margin-bottom: 16px; }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.15), rgba(0,0,0,0));
+      margin: 10px 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .profile-section { flex-direction: column; align-items: center; text-align: center; }
+      .profile-photo { width: 160px; }
+      .profile-info p { text-align: left; }
+    }
+  </style>
 </head>
- 
+
 <body>
-<table width="900" border="0" align="center" border="0" cellspacing="0" cellpadding="20">
-  <tr><td>
 
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-  <p align="center">
-    <pageheading>Tensor-0</pageheading><br>
-  </p>
+<!-- Language Switch -->
+<nav class="lang-switch">
+  <a href="#english-version">🌍 English</a> | <a href="#chinese-version">🇨🇳 简体中文</a>
+</nav>
 
-  <tr>
-    <td width="30%" valign="top"><a href="images/profile.jpg"><img src="images/profile.jpg" width="100%" style="border-radius:15px"></a>
-    <p align=center>
-    | <a href="mailto:z19064165521@gmail.com">Email</a> |
-    <a href="https://github.com/Tensor-0">GitHub</a> |
-    </p>
-    </td>
-    <td width="70%" valign="top" align="justify">
-      <p><strong>Robotics & Motion Control Developer</strong></p>
-      <p>我专注于嵌入式 C 语言运动控制框架开发，主要研究 RoboMaster 偏置并联机构轮腿机器人的正逆运动学解算与 LQR/VMC 底盘平衡控制。熟悉 STM32 平台与 Linux GCC 开发环境，目前正在积极探索 Reinforcement Learning (RL) 在机器人控制中的前沿应用。
-      </p>
-      <p>Email: z19064165521 [AT] gmail.com
-      </p>
-    </td>
-  </tr>
-</table>
+<div class="container">
 
-<hr/>
+  <!-- Top Badges -->
+  <div class="top-badges">
+    <a href="https://github.com/Tensor-0"><img src="https://img.shields.io/badge/Bipedal_Humanoid-RL_Locomotion-blue?style=for-the-badge&logo=ai" alt="Bipedal RL"></a>
+    <a href="https://github.com/Tensor-0"><img src="https://img.shields.io/badge/RoboMaster-Full_Stack-E95420?style=for-the-badge&logo=robot" alt="RoboMaster"></a>
+    <a href="https://github.com/Tensor-0"><img src="https://img.shields.io/badge/Ubuntu_22.04-Developer-E95420?style=for-the-badge&logo=ubuntu" alt="Ubuntu"></a>
+  </div>
 
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
-  <tr><td><sectionheading>&nbsp;&nbsp;Projects</sectionheading></td></tr>
-</table>
+  <!-- ==================== ENGLISH VERSION ==================== -->
+  <a name="english-version"></a>
 
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="15">
-
-  <tr>
-    <td width="40%" valign="top" align="center">
-      <a href="https://github.com/Tensor-0/rm-biased-parallel-controller_KEIL">
-          <img src="images/project_rm.jpg" alt="rm-biased-parallel-controller" width="90%" style="padding-top:0px; padding-bottom:0px; border-radius:15px; height: auto;">
-      </a>
-    </td>
-    <td width="60%" valign="top">
-      <p><a href="https://github.com/Tensor-0/rm-biased-parallel-controller_KEIL" id="RM-CONTROLLER">
-      <heading>rm-biased-parallel-controller</heading></a><br>
-      </p>
-
-      <div class="paper" id="rm-controller">
-      <a href="https://github.com/Tensor-0/rm-biased-parallel-controller_KEIL">GitHub Repo</a>
-
-      <p align="justify"> <i id="rm-controller_abs">针对 RoboMaster 偏置并联机构的开源底盘控制框架。基于 STM32H7 与纯 C 语言实现，打通了 Linux GCC 编译工具链。核心算法包含 VMC 虚拟模型控制（实现复杂的足端力矩映射）与基于 LQR 状态空间方程的倒立摆姿态稳定控制。</i></p>
-
+  <!-- Profile -->
+  <div class="profile-section">
+    <div class="profile-photo">
+      <a href="images/profile.jpg"><img src="images/profile.jpg" alt="Tensor-0 Profile"></a>
+      <div class="profile-links" style="text-align:center; margin-top:10px;">
+        <a href="mailto:3247167757@qq.com">Email</a> |
+        <a href="https://github.com/Tensor-0">GitHub</a>
       </div>
-    </td>
-  </tr>
+    </div>
+    <div class="profile-info">
+      <h1>Tensor-0</h1>
+      <div class="subtitle">Robotics & Embodied AI Researcher</div>
+      <p>I'm a Robotics Engineering student and a highly driven researcher in <strong>Embodied AI</strong>. My work spans from high-speed combat robotic systems to high-DOF bipedal locomotion. Currently, I am deeply focused on <strong>Reinforcement Learning (RL)</strong>, aiming to bridge the sim-to-real gap for articulated robots and achieve robust, dynamic gaits in complex environments.</p>
+      <p style="font-style:italic; color:#888; font-size:14px;">Always open to global collaborations on open-source robotics, RL algorithms, or in-depth technical discussions!</p>
+    </div>
+  </div>
 
-</table>
+  <hr>
 
+  <!-- Projects (EN) -->
+  <div class="section">
+    <div class="section-title">🗂️ Featured Research & Projects</div>
 
-<hr/>
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/dbrl-damiao-bipedal-rl">DBRL — Damiao Bipedal Reinforcement Locomotion</a></h3>
+      <p class="desc">Secondary development framework for the Damiao 19-DOF bipedal humanoid robot. Research focus includes RL-based gait optimization, Sim-to-Real deployment strategies, and high-degree-of-freedom control on NVIDIA Orin platforms.</p>
+      <div class="tags">
+        <span class="tag">Reinforcement Learning</span>
+        <span class="tag">Isaac Gym</span>
+        <span class="tag">Sim-to-Real</span>
+      </div>
+    </div>
 
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="2">
-    <tr><td><br><p align="right">
-    Website template from <a href="http://www.cs.berkeley.edu/~barron/">here</a> and <a href="http://www.cs.cmu.edu/~dpathak/">here</a>
-    </font></p></td></tr>
-</table>
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/rm-biased-parallel-controller">BPIC — Biased Parallel Infantry Controller</a></h3>
+      <p class="desc">C++ based motion control framework for RoboMaster biased parallel infantry chassis. Integrating non-linear Kinematics solvers and LQR/VMC balance control for highly dynamic terrestrial locomotion.</p>
+      <div class="tags">
+        <span class="tag">C++</span>
+        <span class="tag">Kinematics</span>
+        <span class="tag">LQR/VMC</span>
+      </div>
+    </div>
 
-  </td></tr>
-</table>
-<script xml:space="preserve" language="JavaScript">
-hideallbibs();
-</script>
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/friction-dart-controller">FDC — Friction Dart Controller</a></h3>
+      <p class="desc">High-precision launch sequence framework for friction-wheel dart systems. Featuring dual-motor speed synchronization (PID/ADRC) and rigorous state-machine implementations.</p>
+      <div class="tags">
+        <span class="tag">Control Theory</span>
+        <span class="tag">Embedded Systems</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/goldminer-robot-fullstack">GMFS — GoldMiner Full-Stack</a></h3>
+      <p class="desc">A comprehensive full-stack solution for autonomous retrieval robots. Integrates OpenCV-based RGB/Digit detection pipelines with real-time STM32 chassis drive algorithms.</p>
+      <div class="tags">
+        <span class="tag">STM32</span>
+        <span class="tag">Computer Vision</span>
+        <span class="tag">Full-Stack</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LocoWiki (EN) -->
+  <div class="locowiki-section">
+    <h2>📝 LocoWiki: My Developer Brain Dump</h2>
+    <p>A dedicated space for my daily research logs, bug-fixing chronicles, and hardcore math derivations for embodied AI.</p>
+    <div class="locowiki-links">
+      <a href="https://github.com/Tensor-0/LocoWiki/discussions/new?category=💡-每日复盘与碎碎念">⚡ Write a New Daily Log</a>
+      <a href="https://github.com/Tensor-0/LocoWiki/discussions/categories/linux-踩坑录">🐧 Linux Error Logs</a>
+      <a href="https://github.com/Tensor-0/LocoWiki/discussions/categories/rl-与控制理论推导">🧮 RL & Math Derivations</a>
+    </div>
+  </div>
+
+  <hr style="margin-top:30px;">
+
+  <!-- ==================== 中文版本 ==================== -->
+  <a name="chinese-version"></a>
+
+  <div class="section" style="padding-top:30px;">
+    <h1 style="font-size:28px; margin-bottom:6px;">🇨🇳 简体中文版本</h1>
+  </div>
+
+  <!-- Profile (CN) -->
+  <div class="section" style="padding-top:0;">
+    <div class="section-title">🚀 个人简介</div>
+    <p>你好！我是 <strong>张量 (Tensor-0)</strong>。</p>
+    <p>目前专注于<strong>具身人工智能（Embodied AI）</strong>领域，特别是<strong>足式机器人的强化学习 (RL) Locomotion</strong> 算法研发与物理实体落地。</p>
+    <p>我的开发哲学是将严谨的数学理论（如运动学闭链解算、LQR/VMC）与前沿的 AI 算法结合，赋能双足平台和高机动底盘，让机器人真正理解物理世界并做出智能决策。</p>
+    <p style="font-style:italic; color:#888; font-size:14px;">期待与国内科研团队、开源极客以及 RMer 同行进行深度技术交流与合作！</p>
+  </div>
+
+  <hr>
+
+  <!-- Projects (CN) -->
+  <div class="section">
+    <div class="section-title">🗂️ 核心项目精选</div>
+
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/dbrl-damiao-bipedal-rl">DBRL: 达妙双足机器人强化学习框架</a></h3>
+      <p class="desc">基于达妙 19 自由度双足机器人的二次开发项目。核心聚焦于 Isaac Gym 仿真环境搭建、强化学习步态寻优，以及将 ONNX 策略模型成功部署至真实硬件 (Sim-to-Real)。</p>
+      <p class="desc-en">Secondary development framework for the Damiao 19-DOF bipedal humanoid robot — RL gait optimization & Sim-to-Real deployment.</p>
+      <div class="tags">
+        <span class="tag">强化学习 (RL)</span>
+        <span class="tag">双足机器人</span>
+        <span class="tag">具身智能</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/rm-biased-parallel-controller">BPIC: 偏置并联步兵底盘控制器</a></h3>
+      <p class="desc">针对 RoboMaster 偏置并联机构开发的高频底层 C++ 框架。包含复杂的闭链运动学正逆解推导，以及基于 LQR 与 VMC（虚拟模型控制）的倒立摆平衡控制。</p>
+      <p class="desc-en">C++ motion control framework for RoboMaster biased parallel infantry chassis — Kinematics solvers & LQR/VMC balance control.</p>
+      <div class="tags">
+        <span class="tag">C/C++</span>
+        <span class="tag">运动学与动力学</span>
+        <span class="tag">平衡控制</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/friction-dart-controller">FDC: 摩擦轮飞镖发射控制系统</a></h3>
+      <p class="desc">聚焦极高精度的发弹时序与转速控制。应用 PID/ADRC 算法实现双电机高速同步闭环，构建了严谨的有限状态机 (FSM) 保障飞镖出膛稳定性。</p>
+      <p class="desc-en">High-precision friction-wheel dart launch controller — PID/ADRC dual-motor sync & FSM implementation.</p>
+      <div class="tags">
+        <span class="tag">STM32</span>
+        <span class="tag">控制算法</span>
+        <span class="tag">状态机</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/goldminer-robot-fullstack">GMFS: 黄金矿工全栈机器人方案</a></h3>
+      <p class="desc">独立完成的综合型机器人开发项目。涵盖基于 OpenCV 的工业相机 RGB 灯板及数字识别视觉算法，机械臂精准抓取控制，以及底盘驱动融合。</p>
+      <p class="desc-en">Full-stack autonomous retrieval robot — OpenCV vision pipeline, robotic arm control & chassis drive integration.</p>
+      <div class="tags">
+        <span class="tag">全栈开发</span>
+        <span class="tag">机器视觉</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LocoWiki (CN) -->
+  <div class="locowiki-section">
+    <h2>📝 LocoWiki: 个人具身智能开发日志库</h2>
+    <p>这是我的"第二大脑"，用于沉淀每日开发复盘、底层玄学报错记录以及硬核的机器人数理推导。</p>
+    <div class="locowiki-links">
+      <a href="https://github.com/Tensor-0/LocoWiki/discussions/new?category=💡-每日复盘与碎碎念">⚡ 一键开启今日复盘</a>
+      <a href="https://github.com/Tensor-0/LocoWiki/discussions/categories/linux-踩坑录">🐧 查看 Linux 踩坑录</a>
+      <a href="https://github.com/Tensor-0/LocoWiki/discussions/categories/rl-与控制理论推导">🧮 查看 RL 理论推导</a>
+    </div>
+  </div>
+
+  <hr style="margin-top:30px;">
+
+  <!-- Tech Stack -->
+  <div class="tech-stack">
+    <h2>🛠️ 全栈技术储备 / Technical Stack</h2>
+
+    <div class="tech-category">
+      <h4>🤖 算法与仿真 (AI & Simulation)</h4>
+      <p>
+        <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch">
+        <img src="https://img.shields.io/badge/Isaac_Gym-76B900?style=for-the-badge&logo=nvidia&logoColor=white" alt="Isaac Gym">
+        <img src="https://img.shields.io/badge/MuJoCo-000000?style=for-the-badge&logo=openai&logoColor=white" alt="MuJoCo">
+        <img src="https://img.shields.io/badge/ROS2-22314E?style=for-the-badge&logo=ros&logoColor=white" alt="ROS2">
+      </p>
+    </div>
+
+    <div class="tech-category">
+      <h4>💻 软件与硬件 (Software & Hardware)</h4>
+      <p>
+        <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++">
+        <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+        <img src="https://img.shields.io/badge/Linux_Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu">
+        <img src="https://img.shields.io/badge/STM32_/_Orin-76B900?style=for-the-badge&logo=nvidia&logoColor=white" alt="STM32/Orin">
+      </p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Contact -->
+  <div class="contact-section">
+    <h2 style="font-size:20px; font-weight:600; margin-bottom:14px;">🤝 联系方式 / Connect with Me</h2>
+    <p>
+      <a href="mailto:3247167757@qq.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>
+      <a href="https://space.bilibili.com/171912855"><img src="https://img.shields.io/badge/Bilibili-00A1D6?style=for-the-badge&logo=bilibili&logoColor=white" alt="Bilibili"></a>
+      <a href="https://www.zhihu.com/people/70-53-83-52-49"><img src="https://img.shields.io/badge/Zhihu-0084FF?style=for-the-badge&logo=zhihu&logoColor=white" alt="Zhihu"></a>
+    </p>
+  </div>
+
+  <hr>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>
+      <img src="https://github-readme-streak-stats.herokuapp.com/?user=Tensor-0&theme=radical&hide_border=true" alt="GitHub Streak" style="max-width:100%;">
+    </p>
+    <p><em>"Iterating on the future of embodied locomotion, one tensor at a time." 🤖</em></p>
+  </div>
+
+</div>
+
 </body>
-
 </html>
