@@ -193,7 +193,7 @@
 
 <!-- Language Switch -->
 <nav class="lang-switch">
-  <a href="#english-version">🌍 English</a> | <a href="#chinese-version">🇨🇳 简体中文</a>
+  <a href="#chinese-version">🇨🇳 简体中文</a> | <a href="#english-version">🌍 English</a>
 </nav>
 
 <div class="container">
@@ -204,6 +204,97 @@
     <a href="https://github.com/Tensor-0"><img src="https://img.shields.io/badge/RoboMaster-Full_Stack-E95420?style=for-the-badge&logo=robot" alt="RoboMaster"></a>
     <a href="https://github.com/Tensor-0"><img src="https://img.shields.io/badge/Ubuntu_22.04-Developer-E95420?style=for-the-badge&logo=ubuntu" alt="Ubuntu"></a>
   </div>
+
+  <!-- ==================== 中文版本 ==================== -->
+  <a name="chinese-version"></a>
+
+  <div class="section" style="padding-top:30px;">
+    <h1 style="font-size:28px; margin-bottom:6px;">🇨🇳 简体中文版本</h1>
+  </div>
+
+  <!-- Profile (CN) -->
+  <div class="section" style="padding-top:0;">
+    <div class="section-title">个人简介</div>
+    <p>你好！我是 <strong>张量 (Tensor-0)</strong>。</p>
+    <p>目前研究方向为<strong>具身人工智能（Embodied AI）</strong>，具体包括<strong>足式机器人的强化学习 (RL) Locomotion</strong> 算法及其物理实体部署。</p>
+    <p>工程实践中，将运动学闭链解算、LQR/VMC 等数学方法与 AI 算法结合，应用于双足平台与高机动底盘的运动控制。</p>
+    <p style="font-style:italic; color:#888; font-size:14px;">欢迎与科研团队及开源同行交流与合作。</p>
+  </div>
+
+  <hr>
+
+  <!-- Projects (CN) -->
+  <div class="section">
+    <div class="section-title">核心项目精选</div>
+
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/roocode-plus">RooCode Plus — 多模型本地代理适配层</a></h3>
+      <p class="desc">针对 Roo Code 的多模型本地代理适配层。基于 FastAPI 构建本地服务拦截与重构 HTTP 请求，动态注入缺失参数，解决 Roo Code 与 DeepSeek 等模型间的 API 格式不兼容及上下文截断问题。包含跨平台自动化安装与测试脚本。</p>
+      <p class="desc-en">A local proxy adapter for Roo Code based on FastAPI. Intercepts and restructures HTTP requests, dynamically injecting missing fields to resolve API incompatibilities with models like DeepSeek. Includes cross-platform automation scripts.</p>
+      <img src="images/roocode-plus.png" alt="RooCode Plus 架构图" style="max-width:100%; border-radius:8px; margin-top:8px;">
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Shell</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/dbrl-damiao-bipedal-rl">DBRL: 达妙双足机器人强化学习框架</a></h3>
+      <p class="desc">针对达妙 19 自由度双足机器人的 RL 步态优化框架，包含 Isaac Gym 仿真环境搭建、策略训练，以及 ONNX 模型在物理硬件上的 Sim-to-Real 部署。</p>
+      <p class="desc-en">RL-based gait optimization framework for the Damiao 19-DOF bipedal humanoid robot — Sim-to-Real deployment and high-DOF policy control.</p>
+      <div class="tags">
+        <span class="tag">强化学习 (RL)</span>
+        <span class="tag">双足机器人</span>
+        <span class="tag">具身智能</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/rm-biased-parallel-controller">BPIC: 偏置并联步兵底盘控制器</a></h3>
+      <p class="desc">针对 RoboMaster 偏置并联机构的 C++ 底层控制框架，实现了闭链运动学正逆解算器与基于 LQR/VMC 的倒立摆平衡控制器。</p>
+      <p class="desc-en">C++ motion control framework for RoboMaster biased parallel infantry chassis — Kinematics solvers & LQR/VMC balance control.</p>
+      <div class="tags">
+        <span class="tag">C/C++</span>
+        <span class="tag">运动学与动力学</span>
+        <span class="tag">平衡控制</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/friction-dart-controller">FDC: 摩擦轮飞镖发射控制系统</a></h3>
+      <p class="desc">摩擦轮飞镖发射时序与转速控制器，通过 PID/ADRC 实现双电机同步闭环，以有限状态机 (FSM) 管理发射流程。</p>
+      <p class="desc-en">Friction-wheel dart launch controller — PID/ADRC dual-motor sync & FSM-based sequencing.</p>
+      <div class="tags">
+        <span class="tag">STM32</span>
+        <span class="tag">控制算法</span>
+        <span class="tag">状态机</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/goldminer-robot-fullstack">GMFS: 黄金矿工全栈机器人方案</a></h3>
+      <p class="desc">自主检索机器人系统，集成了 OpenCV 视觉检测、机械臂抓取控制与底盘驱动。</p>
+      <p class="desc-en">Full-stack autonomous retrieval robot — OpenCV vision pipeline, robotic arm control & chassis drive integration.</p>
+      <div class="tags">
+        <span class="tag">全栈开发</span>
+        <span class="tag">机器视觉</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LocoWiki (CN) -->
+  <div class="locowiki-section">
+    <h2>📝 LocoWiki: 个人具身智能开发日志库</h2>
+    <p>我的技术日志库，用于沉淀每日开发复盘、错误排查记录以及机器人数理推导。</p>
+    <div class="locowiki-links">
+      <a href="https://github.com/Tensor-0/LocoWiki/discussions/new?category=💡-每日复盘与碎碎念">开启今日复盘</a>
+      <a href="https://github.com/Tensor-0/LocoWiki/discussions/categories/linux-踩坑录">🐧 Linux 踩坑录</a>
+      <a href="https://github.com/Tensor-0/LocoWiki/discussions/categories/rl-与控制理论推导">🧮 RL 理论推导</a>
+    </div>
+  </div>
+
+  <hr style="margin-top:30px;">
 
   <!-- ==================== ENGLISH VERSION ==================== -->
   <a name="english-version"></a>
@@ -220,8 +311,8 @@
     <div class="profile-info">
       <h1>Tensor-0</h1>
       <div class="subtitle">Robotics & Embodied AI Researcher</div>
-      <p>I'm a Robotics Engineering student and a highly driven researcher in <strong>Embodied AI</strong>. My work spans from high-speed combat robotic systems to high-DOF bipedal locomotion. Currently, I am deeply focused on <strong>Reinforcement Learning (RL)</strong>, aiming to bridge the sim-to-real gap for articulated robots and achieve robust, dynamic gaits in complex environments.</p>
-      <p style="font-style:italic; color:#888; font-size:14px;">Always open to global collaborations on open-source robotics, RL algorithms, or in-depth technical discussions!</p>
+      <p>I study Robotics Engineering with a focus on <strong>Embodied AI</strong>. My work covers high-speed combat robotic systems and high-DOF bipedal locomotion, with current emphasis on <strong>Reinforcement Learning (RL)</strong> for sim-to-real transfer of articulated robots and robust dynamic gait generation.</p>
+      <p style="font-style:italic; color:#888; font-size:14px;">Open to collaborations on open-source robotics, RL algorithms, and related technical work.</p>
     </div>
   </div>
 
@@ -229,11 +320,22 @@
 
   <!-- Projects (EN) -->
   <div class="section">
-    <div class="section-title">🗂️ Featured Research & Projects</div>
+    <div class="section-title">Featured Research & Projects</div>
+
+    <div class="project-card">
+      <h3><a href="https://github.com/Tensor-0/roocode-plus">RooCode Plus — Multi-Model Local Proxy Adapter</a></h3>
+      <p class="desc">A local proxy adapter for Roo Code, built on FastAPI to intercept and restructure HTTP requests. Dynamically injects missing fields to resolve API format incompatibilities and context truncation between Roo Code and models like DeepSeek. Includes cross-platform automation scripts for installation and testing.</p>
+      <img src="images/roocode-plus.png" alt="RooCode Plus Architecture" style="max-width:100%; border-radius:8px; margin-top:8px;">
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">REST API</span>
+      </div>
+    </div>
 
     <div class="project-card">
       <h3><a href="https://github.com/Tensor-0/dbrl-damiao-bipedal-rl">DBRL — Damiao Bipedal Reinforcement Locomotion</a></h3>
-      <p class="desc">Secondary development framework for the Damiao 19-DOF bipedal humanoid robot. Research focus includes RL-based gait optimization, Sim-to-Real deployment strategies, and high-degree-of-freedom control on NVIDIA Orin platforms.</p>
+      <p class="desc">RL-based gait optimization framework for the Damiao 19-DOF bipedal humanoid robot. Covers Sim-to-Real deployment and high-DOF policy control on NVIDIA Orin platforms.</p>
       <div class="tags">
         <span class="tag">Reinforcement Learning</span>
         <span class="tag">Isaac Gym</span>
@@ -243,7 +345,7 @@
 
     <div class="project-card">
       <h3><a href="https://github.com/Tensor-0/rm-biased-parallel-controller">BPIC — Biased Parallel Infantry Controller</a></h3>
-      <p class="desc">C++ based motion control framework for RoboMaster biased parallel infantry chassis. Integrating non-linear Kinematics solvers and LQR/VMC balance control for highly dynamic terrestrial locomotion.</p>
+      <p class="desc">C++ motion control framework for RoboMaster biased parallel infantry chassis. Implements non-linear kinematics solvers and LQR/VMC balance control.</p>
       <div class="tags">
         <span class="tag">C++</span>
         <span class="tag">Kinematics</span>
@@ -253,7 +355,7 @@
 
     <div class="project-card">
       <h3><a href="https://github.com/Tensor-0/friction-dart-controller">FDC — Friction Dart Controller</a></h3>
-      <p class="desc">High-precision launch sequence framework for friction-wheel dart systems. Featuring dual-motor speed synchronization (PID/ADRC) and rigorous state-machine implementations.</p>
+      <p class="desc">Launch sequence controller for friction-wheel dart systems, with dual-motor speed synchronization (PID/ADRC) and finite-state-machine sequencing.</p>
       <div class="tags">
         <span class="tag">Control Theory</span>
         <span class="tag">Embedded Systems</span>
@@ -262,7 +364,7 @@
 
     <div class="project-card">
       <h3><a href="https://github.com/Tensor-0/goldminer-robot-fullstack">GMFS — GoldMiner Full-Stack</a></h3>
-      <p class="desc">A comprehensive full-stack solution for autonomous retrieval robots. Integrates OpenCV-based RGB/Digit detection pipelines with real-time STM32 chassis drive algorithms.</p>
+      <p class="desc">Full-stack autonomous retrieval system integrating OpenCV-based object detection with STM32 chassis control.</p>
       <div class="tags">
         <span class="tag">STM32</span>
         <span class="tag">Computer Vision</span>
@@ -273,91 +375,12 @@
 
   <!-- LocoWiki (EN) -->
   <div class="locowiki-section">
-    <h2>📝 LocoWiki: My Developer Brain Dump</h2>
-    <p>A dedicated space for my daily research logs, bug-fixing chronicles, and hardcore math derivations for embodied AI.</p>
+    <h2>📝 LocoWiki: Developer Log</h2>
+    <p>A workspace for daily research logs, debugging notes, and math derivations for embodied AI.</p>
     <div class="locowiki-links">
-      <a href="https://github.com/Tensor-0/LocoWiki/discussions/new?category=💡-每日复盘与碎碎念">⚡ Write a New Daily Log</a>
+      <a href="https://github.com/Tensor-0/LocoWiki/discussions/new?category=💡-每日复盘与碎碎念">Write a Daily Log</a>
       <a href="https://github.com/Tensor-0/LocoWiki/discussions/categories/linux-踩坑录">🐧 Linux Error Logs</a>
       <a href="https://github.com/Tensor-0/LocoWiki/discussions/categories/rl-与控制理论推导">🧮 RL & Math Derivations</a>
-    </div>
-  </div>
-
-  <hr style="margin-top:30px;">
-
-  <!-- ==================== 中文版本 ==================== -->
-  <a name="chinese-version"></a>
-
-  <div class="section" style="padding-top:30px;">
-    <h1 style="font-size:28px; margin-bottom:6px;">🇨🇳 简体中文版本</h1>
-  </div>
-
-  <!-- Profile (CN) -->
-  <div class="section" style="padding-top:0;">
-    <div class="section-title">🚀 个人简介</div>
-    <p>你好！我是 <strong>张量 (Tensor-0)</strong>。</p>
-    <p>目前专注于<strong>具身人工智能（Embodied AI）</strong>领域，特别是<strong>足式机器人的强化学习 (RL) Locomotion</strong> 算法研发与物理实体落地。</p>
-    <p>我的开发哲学是将严谨的数学理论（如运动学闭链解算、LQR/VMC）与前沿的 AI 算法结合，赋能双足平台和高机动底盘，让机器人真正理解物理世界并做出智能决策。</p>
-    <p style="font-style:italic; color:#888; font-size:14px;">期待与国内科研团队、开源极客以及 RMer 同行进行深度技术交流与合作！</p>
-  </div>
-
-  <hr>
-
-  <!-- Projects (CN) -->
-  <div class="section">
-    <div class="section-title">🗂️ 核心项目精选</div>
-
-    <div class="project-card">
-      <h3><a href="https://github.com/Tensor-0/dbrl-damiao-bipedal-rl">DBRL: 达妙双足机器人强化学习框架</a></h3>
-      <p class="desc">基于达妙 19 自由度双足机器人的二次开发项目。核心聚焦于 Isaac Gym 仿真环境搭建、强化学习步态寻优，以及将 ONNX 策略模型成功部署至真实硬件 (Sim-to-Real)。</p>
-      <p class="desc-en">Secondary development framework for the Damiao 19-DOF bipedal humanoid robot — RL gait optimization & Sim-to-Real deployment.</p>
-      <div class="tags">
-        <span class="tag">强化学习 (RL)</span>
-        <span class="tag">双足机器人</span>
-        <span class="tag">具身智能</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3><a href="https://github.com/Tensor-0/rm-biased-parallel-controller">BPIC: 偏置并联步兵底盘控制器</a></h3>
-      <p class="desc">针对 RoboMaster 偏置并联机构开发的高频底层 C++ 框架。包含复杂的闭链运动学正逆解推导，以及基于 LQR 与 VMC（虚拟模型控制）的倒立摆平衡控制。</p>
-      <p class="desc-en">C++ motion control framework for RoboMaster biased parallel infantry chassis — Kinematics solvers & LQR/VMC balance control.</p>
-      <div class="tags">
-        <span class="tag">C/C++</span>
-        <span class="tag">运动学与动力学</span>
-        <span class="tag">平衡控制</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3><a href="https://github.com/Tensor-0/friction-dart-controller">FDC: 摩擦轮飞镖发射控制系统</a></h3>
-      <p class="desc">聚焦极高精度的发弹时序与转速控制。应用 PID/ADRC 算法实现双电机高速同步闭环，构建了严谨的有限状态机 (FSM) 保障飞镖出膛稳定性。</p>
-      <p class="desc-en">High-precision friction-wheel dart launch controller — PID/ADRC dual-motor sync & FSM implementation.</p>
-      <div class="tags">
-        <span class="tag">STM32</span>
-        <span class="tag">控制算法</span>
-        <span class="tag">状态机</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3><a href="https://github.com/Tensor-0/goldminer-robot-fullstack">GMFS: 黄金矿工全栈机器人方案</a></h3>
-      <p class="desc">独立完成的综合型机器人开发项目。涵盖基于 OpenCV 的工业相机 RGB 灯板及数字识别视觉算法，机械臂精准抓取控制，以及底盘驱动融合。</p>
-      <p class="desc-en">Full-stack autonomous retrieval robot — OpenCV vision pipeline, robotic arm control & chassis drive integration.</p>
-      <div class="tags">
-        <span class="tag">全栈开发</span>
-        <span class="tag">机器视觉</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- LocoWiki (CN) -->
-  <div class="locowiki-section">
-    <h2>📝 LocoWiki: 个人具身智能开发日志库</h2>
-    <p>这是我的"第二大脑"，用于沉淀每日开发复盘、底层玄学报错记录以及硬核的机器人数理推导。</p>
-    <div class="locowiki-links">
-      <a href="https://github.com/Tensor-0/LocoWiki/discussions/new?category=💡-每日复盘与碎碎念">⚡ 一键开启今日复盘</a>
-      <a href="https://github.com/Tensor-0/LocoWiki/discussions/categories/linux-踩坑录">🐧 查看 Linux 踩坑录</a>
-      <a href="https://github.com/Tensor-0/LocoWiki/discussions/categories/rl-与控制理论推导">🧮 查看 RL 理论推导</a>
     </div>
   </div>
 
